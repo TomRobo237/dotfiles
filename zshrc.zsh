@@ -26,7 +26,7 @@ DISABLE_UPDATE_PROMPT="true"
 plugins=(
 	git
   zsh-autosuggestions
-  zsh-syntax-hightlighting
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
