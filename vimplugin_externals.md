@@ -1,0 +1,8 @@
+FastFold [here](https://github.com/Konfekt/FastFold)  
+python-syntax [here](https://github.com/vim-python/python-syntax)  
+rainbow_csv [here](https://github.com/mechatroner/rainbow_csv)  
+vim-markdown [here](https://github.com/plasticboy/vim-markdown)  
+git-gutter [here](https://github.com/airblade/vim-gitgutter)  
+gruvbox [here](https://github.com/morhetz/gruvbox)  
+vim-polyglot [here](https://github.com/sheerun/vim-polyglot)  
+vim-vinegar [here](https://github.com/tpope/vim-vinegar)

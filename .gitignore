@@ -1,0 +1,4 @@
+vim_git/
+zsh_git/
+# Name any specific external files with ext_ and they will be inculded but not put into vcs, like job specific commands
+ext_*
