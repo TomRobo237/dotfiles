@@ -104,6 +104,9 @@ if ! test -d "$HOME/.vim/plugin" ; then
   printf 'Creating %s/.vim/plugin.' "$HOME"
   mkdir -p "$HOME/.vim/plugin/"
 fi
+
+mkdir ~/.vim/backup ~/.vim/swap ~/.vim/undo 
+
 VIMDIR="$HOME/.vim/plugin"
 
 for FILE in "$MYDIR"'/vimplugins/'*'.vim' ; do
