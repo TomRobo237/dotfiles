@@ -31,9 +31,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Alias vi to Vim and ss to sudo last command
+# Alias vi to Vim and sd to sudo last command
 alias vi='vim'
-alias ss='sudo "$(which zsh)" -c "$(history -p !!)"'
+alias sd='sudo "$(which zsh)" -c "$(history -p !!)"'
 
 # LMGTFY
 google() {
