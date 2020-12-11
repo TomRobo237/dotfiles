@@ -65,15 +65,8 @@ alias cleanup_git_branches='git branch --merged | grep -Ev "(^\*|master|dev)" | 
 #         export NIX_IGNORE_SYMLINK_STORE=1
 #         source /Users/tmiller/.nix-profile/etc/profile.d/nix.sh
 #         export NIX_PATH='darwin-config=/Users/tmiller/.nixpkgs/darwin-configuration.nix:/Users/tmiller/.nix-defexpr/channels:/Users/tmiller/.nix-defexpr/channels'
-# 
-#         # Adding Shell integration for ZSH
+#         # Adding iterm Shell integration for ZSH
 #         source ~/.iterm2_shell_integration.zsh
-# 
-#         # If you come from bash you might have to change your $PATH.
-#         # Make sure .nix_profile goes in the front to ensure that its bins get chosen first
-#         PATH="${HOME}/.nix-profile/bin:$(python3 -m site --user-base)/bin:${PATH}"
-#         PATH="${PATH}:${HOME}/ubin/pyscripts:${HOME}/.local/bin"
-# 
 # END OSX Section
 
 # Fuzzy finder
@@ -87,4 +80,11 @@ if test -x "$(command -v fortune)" ; then
 		"$(command -v fortune)"
 	fi
 fi
-
+# If direnv exists run it.
+if test -x "$(command -v direnv)" ; then
+  eval "$(direnv hook zsh)"
+fi
+# Source any external shell files for work, so its in a seperate VCS.
+for ext in $HOME/.ext_*zsh ; do
+  source $ext
+done
