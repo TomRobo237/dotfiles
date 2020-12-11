@@ -8,7 +8,7 @@ if test -f "$MYOUTPUT" ; then
   true > "$MYOUTPUT"
 fi 
 
-if test $1 = '-z' ; then
+if test "$1" = '-z' ; then
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
   if test -z $ZSH_CUSTOM ; then
@@ -80,9 +80,26 @@ if test $1 = '-z' ; then
 fi
 
 RCFILES='bashrc.sh vimrc.vim zshrc.zsh'
+EXT_FILES=''
+for i in ext_* ; do
+  if test "$i" = 'ext_*' && ! test -e 'ext_*' ; then
+    continue # nullglob
+  fi
+  EXT_FILES="$EXT_FILES $i"
+done
+for i in ext/ext_* ; do
+  if test "$i" = 'ext/ext_*' && ! test -e 'ext/ext_*' ; then
+    continue # nullglob
+  fi
+  EXT_FILES="$EXT_FILES $i"
+done
 
-for FILE in $RCFILES ext_*; do # Space splitting intentional
-  DOTFILE='.'"$(printf '%s' "$FILE" | rev | cut -f 2- -d '.' | rev)"
+for FILE in $RCFILES $EXT_FILES ; do # Space splitting intentional
+  case $FILE in
+    'ext/'*) DOTFILE='.'"$(printf '%s' "$FILE" | cut -c5- )" ;;
+    'ext_'*) DOTFILE='.'"$(printf '%s' "$FILE" )";; 
+    *)       DOTFILE='.'"$(printf '%s' "$FILE" | rev | cut -f 2- -d '.' | rev)" ;;
+  esac
   if test -L "$HOME"'/'"$DOTFILE" ; then
     printf '%s is already symlinked to %s, removing.\n' "$DOTFILE" "$(readlink "$HOME"'/'"$DOTFILE")"
     rm "$HOME"'/'"$DOTFILE"
